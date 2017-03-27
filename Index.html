@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html ng-app="gemStore">
+
+<head> 
+<link rel="stylesheet" href="./app.css" />
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"> </script>
+<script src="./app.js"> </script> 	
+</head>
+
+<body > 
+<!-- <body ng-controller="StoreController as store" ng-hide="store.product.soldOut"> -->
+	<section scroll="" ng-mouse-wheel-down=""  ng-controller="ImageController as imageCtrl"> 
+		<div ng-repeat="row in imageCtrl.images" show-initial-block class="ng-repeat-line" >
+			<span id="{{image.id}}" class="ng-repeat-custom-class" ng-repeat="image in row">
+				<img alt= "" ng-src="{{image.url}}"/> 
+			</span>
+			</br>
+		</div>
+		</br>
+	</section>
+	
+	<!-- 
+	<ul class="list-group">
+		<li class="list-group-item" ng-repeat="product in store.products">
+			<h3> 
+			{{'1388123412323' | date:'MM/dd/yyyy @ h:mma'}}
+			{{product.name | uppercase}}
+			<em class="pull-right">{{product.price | currency}}</em>
+			{{product.description | limitTo:100}}
+			</h3>
+			<img ng-src="{{product.images[0].full}}"/>
+		</li>
+	</ul>
+	<section ng-controller="PanelController"> 
+		<ul class="nav nav-pills">
+			<li ng-class="{active: panel.isSelected(1)}"> 
+				<a href ng-click="panel.selectTab(1)">Description</a> 
+			</li>
+			<li ng-class="{active: panel.isSelected(2)}"> 
+				<a href ng-click="panel.selectTab(2)">Specifications</a> 
+			</li>
+			<li ng-class="{active: panel.isSelected(3)}"> 
+				<a href ng-click="panel.selectTab(3)">Reviews</a> 
+			</li>
+		</ul> 
+		<div class="panel" ng-show="panel.selectTab(1)">
+		  <h4>Description</h4>
+		  <p>{{product.description}}</p> 
+		  <h4> Reviews </h4>
+		  <blockquote ng-repeat="review in product.reviews">
+			<b>Stars: {{review.stars}}</b>
+			{{review.body}}
+			<cite>by: {{review.author}}</cite>
+		  </blockquote>
+		  <form name="reviewForm" ng-controller="ReviewController as reviewCtrl"
+		  ng-submit="reviewCtrl.addReview(product)"	novalidate>
+			<blockquote>
+				<b>Stars: {{reviewCtrl.review.stars}}</b> 
+				{{reviewCtrl.review.body}}
+				<cite>by: {{reviewCtrl.review.author}}</cite> 
+			</blockquote> 
+			<select ng-model="review.stars" required>
+				<option value="1">1 star</option> 
+				<option value="2">2 star</option> 
+				<option value="3">3 star</option> 
+				<option value="4">4 star</option> 
+				<option value="5">5 star</option> 
+			</select> 
+			<textarea ng-model="reviewCtrl.review.body" required></textarea>
+			<label>by:</label> 
+			<input ng-model="reviewCtrl.review.author" type="email" /> 
+			<input type="submit" value="Submit" /> 
+		  </form> 
+		</div> 
+		<div class="panel" ng-show="panel.selectTab(2)">
+		  <h4>Specifications</h4>
+		  <blockquote>None yet</blockquote>
+		</div> 
+		<div class="panel" ng-show="panel.selectTab(3)">
+		  <h4>Reviews</h4>
+		  <blockquote>None yet</blockquote>
+		</div> 
+	</section>
+	
+	 -->
+	
+</body>
+
+</html>

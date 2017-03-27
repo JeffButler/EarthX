@@ -1,0 +1,17 @@
+.ng-repeat-custom-class {
+	display: none;
+	line-height: 0px;
+	white-space: nowrap;
+	word-spacing: -6px;
+}
+
+.ng-repeat-load-image-class {
+	display: block;
+	line-height: 0px;
+	white-space: nowrap;
+	word-spacing: -5px;
+}
+
+.ng-repeat-line {
+	line-height: 0px;
+}
