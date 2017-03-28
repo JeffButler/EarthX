@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('gemStore', []);
+	var app = angular.module('earthx', []);
 	
 	var MAX_RESOLUTION = 5
 	var MAX_ROWS = 4;
@@ -11,8 +11,6 @@
 	app.controller('ImageController', function() {
 		
 		this.resolution = 0;
-		this.column = GLOBAL_column;
-		this.row = GLOBAL_row;
 		
 		this.updateImages = function() {
 			this.images = this.makeHiddenImageMatrix();
@@ -69,10 +67,6 @@
 		this.images = this.makeHiddenImageMatrix();
 	});
 		
-	window.onload = function() {
-		
-	}
-
 	app.directive('ngMouseWheelDown', function() {
 		return {
 			restrict: 'A',
@@ -80,7 +74,6 @@
 			controller: 'ImageController', 
 			link: function(scope, element, attrs, ctrl) {
 				element.bind("DOMMouseScroll mousewheel onmousewheel", function(event) {
-					console.log('Run');
 					var event = window.event || event;
 					var delta = Math.max(-1, Math.min(1, (event.wheelDelta || -event.detail)));
 					scope.$eval(attrs.ngMouseWheelDown);
@@ -92,7 +85,7 @@
 		};
 	});
 	
-	app.directive("scroll", function ($window) {
+	app.directive("ngScroll", function ($window) {
 		return { 
 			restrict: 'A',
 			controller: 'ImageController',
@@ -109,16 +102,12 @@
 					
 					GLOBAL_column = column;
 					GLOBAL_row = row;
-
-					console.log("WHAT? " + row + column);
 					
 					if (scrollWidth - (innerWidth + xOffset) < PRELOAD_PIXEL_BUFFER && !ctrl.isImageBlockVisible(row,column + 1)) {
-						console.log("trigger right preloaded images");
 						ctrl.showImageBlock(row, column + 1);
 					}
 					if (xOffset < PRELOAD_PIXEL_BUFFER && !ctrl.isImageBlockVisible(row, column - 1)) {
 						ctrl.showImageBlock(row, column - 1);
-						console.log("trigger left preloaded images");
 					}
 					if (scrollHeight - (innerHeight + yOffset) < PRELOAD_PIXEL_BUFFER && !ctrl.isImageBlockVisible(row,column - 1)) {
 						ctrl.showImageBlock(row - 1, column);
@@ -136,7 +125,7 @@
 		};
 	});
 	
-	app.directive("showInitialBlock", function() {
+	app.directive("ngShowInitialBlock", function() {
 		return {
 			restrict: "A", 
 			controller: "ImageController", 

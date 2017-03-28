@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="gemStore">
+<html ng-app="earthx">
 
 <head> 
 <link rel="stylesheet" href="./app.css" />
@@ -10,8 +10,8 @@
 </head>
 
 <body > 
-	<section scroll="" ng-mouse-wheel-down=""  ng-controller="ImageController as imageCtrl"> 
-		<div ng-repeat="row in imageCtrl.images" show-initial-block class="ng-repeat-line" >
+	<section ng-scroll="" ng-mouse-wheel-down=""  ng-controller="ImageController as imageCtrl"> 
+		<div ng-repeat="row in imageCtrl.images" ng-show-initial-block class="ng-repeat-line" >
 			<span id="{{image.id}}" class="ng-repeat-custom-class" ng-repeat="image in row">
 				<img alt= "" ng-src="{{image.url}}"/> 
 			</span>
