@@ -18,7 +18,6 @@
 		};
 		
 		this.updateResolution = function(res) {
-			console.log(" CUURENT " + this.resolution + " NEW " + res);
 			var newResolution = res + this.resolution;	
 			if (newResolution < MAX_RESOLUTION && newResolution > -1) {
 					this.resolution = newResolution;
@@ -32,13 +31,11 @@
 						GLOBAL_row = Math.round(Math.pow(GLOBAL_row, 0.5));
 						GLOBAL_column = Math.round(Math.pow(GLOBAL_column, 0.5));
 					} 
-					console.log("R " + GLOBAL_row + " C " + GLOBAL_column);
 					this.updateImages();	
 			}
 		};
 		
 		this.showImageBlock = function(r, c) {
-			console.log("CALLED " + r, c);
 			if (r > -1 && c > -1) {
 				var currentRowIndex = r * Math.pow(2, this.resolution) * MAX_ROWS;
 				var currentColumnIndex = c * Math.pow(2, this.resolution) * MAX_COLUMNS;
@@ -146,7 +143,7 @@
 				if (scope.$last === true) {
 					var timeout = setInterval(function(){
 						ctrl.showImageBlock(GLOBAL_row, GLOBAL_column);
-					}, 20); 
+					}, 0); 
 				}
 			}
 		};
