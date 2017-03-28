@@ -14,19 +14,31 @@
 		
 		this.updateImages = function() {
 			this.images = this.makeHiddenImageMatrix();
+			this.showImageBlock(GLOBAL_row, GLOBAL_column);	
 		};
 		
 		this.updateResolution = function(res) {
+			console.log(" CUURENT " + this.resolution + " NEW " + res);
 			var newResolution = res + this.resolution;	
 			if (newResolution < MAX_RESOLUTION && newResolution > -1) {
 					this.resolution = newResolution;
-					GLOBAL_row = Math.pow(2, GLOBAL_row);
-					GLOBAL_column = Math.pow(2, GLOBAL_column);
-					this.updateImages();
+					if (this.resolution == 0) {
+						GLOBAL_row = 0;
+						GLOBAL_column = 0;
+					} else if (res > 0) {
+						GLOBAL_row = Math.pow(2, GLOBAL_row);
+						GLOBAL_column = Math.pow(2, GLOBAL_column);
+					} else {
+						GLOBAL_row = Math.round(Math.pow(GLOBAL_row, 0.5));
+						GLOBAL_column = Math.round(Math.pow(GLOBAL_column, 0.5));
+					} 
+					console.log("R " + GLOBAL_row + " C " + GLOBAL_column);
+					this.updateImages();	
 			}
 		};
 		
 		this.showImageBlock = function(r, c) {
+			console.log("CALLED " + r, c);
 			if (r > -1 && c > -1) {
 				var currentRowIndex = r * Math.pow(2, this.resolution) * MAX_ROWS;
 				var currentColumnIndex = c * Math.pow(2, this.resolution) * MAX_COLUMNS;
@@ -79,6 +91,7 @@
 					scope.$eval(attrs.ngMouseWheelDown);
 					ctrl.updateResolution(delta);
 					scope.imageCtrl.images = ctrl.images;
+					ctrl.showImageBlock(GLOBAL_row, GLOBAL_column);
 					scope.$apply();
 				});
 			}
